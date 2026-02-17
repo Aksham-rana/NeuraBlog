@@ -8,7 +8,10 @@ const cors = require('cors');
 
 const app = express();
 app.use(cors({
-  origin: 'https://neura-blog-3fcj59ibr-aksham-ranas-projects.vercel.app',
+  origin: [
+    'https://neura-blog-mu.vercel.app',
+    'https://neura-blog-3fcj59ibr-aksham-ranas-projects.vercel.app'
+  ],
   credentials: true
 }));
 
