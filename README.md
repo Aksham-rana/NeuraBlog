@@ -12,7 +12,7 @@ Backend: https://neura-blog-server-pi.vercel.app/
 ## 🔐 Admin Demo Access
 
 To access the admin panel, use the following credentials:
-
+--
 **Email:** admin@example.com  
 **Password:** greatstack  
 
