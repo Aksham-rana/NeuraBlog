@@ -65,6 +65,12 @@ const Login = () => {
 
   }
 
+  const fillDemoCredentials = () => {
+    setEmail('admin@example.com')
+    setPassword('greatstack')
+    toast.success('Demo credentials filled')
+  }
+
 
   return (
     <div className='flex items-center justify-center h-screen bg-gray-50'>
@@ -85,6 +91,28 @@ const Login = () => {
             <p className='font-light text-gray-500'>
               Enter your credentials to access the admin panel
             </p>
+            <div className='mt-4 flex flex-col items-center gap-2'>
+              <div className='text-sm text-gray-500'>Demo access</div>
+              <div className='flex gap-3'>
+                <button
+                  type='button'
+                  onClick={fillDemoCredentials}
+                  className='px-4 py-2 rounded bg-gradient-to-r from-yellow-400 to-yellow-300 text-black font-semibold shadow-md hover:from-yellow-300 hover:to-yellow-200 transition'
+                  aria-label='Fill demo admin credentials'
+                >
+                  Use demo admin credentials
+                </button>
+
+                <button
+                  type='button'
+                  onClick={() => { setEmail(''); setPassword(''); toast('Cleared demo credentials') }}
+                  className='px-4 py-2 rounded border border-gray-300 text-gray-700 bg-white hover:bg-gray-50 transition'
+                  aria-label='Clear credentials'
+                >
+                  Clear
+                </button>
+              </div>
+            </div>
           </div>
 
           {/* Form */}
