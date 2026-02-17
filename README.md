@@ -9,9 +9,12 @@ NeuraBlog is a production-ready full stack blogging platform built using the MER
 Frontend: https://neura-blog-mu.vercel.app/
 Backend: https://neura-blog-server-pi.vercel.app/
 
-To Access Admin Panel
-Email: admin@example.com  
-Password: greatstack  
+## 🔐 Admin Demo Access
+
+To access the admin panel, use the following credentials:
+
+**Email:** admin@example.com  
+**Password:** greatstack  
 
 ---
 
