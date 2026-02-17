@@ -4,8 +4,13 @@ import cors from 'cors'
 import connectDB from "./configs/db.js";
 import adminRouter from "./routes/adminRoutes.js";
 import blogRouter from "./routes/blogRoutes.js";
+const cors = require('cors');
 
 const app = express();
+app.use(cors({
+  origin: 'https://neura-blog-3fcj59ibr-aksham-ranas-projects.vercel.app',
+  credentials: true
+}));
 
 await connectDB()
 
