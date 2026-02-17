@@ -6,8 +6,8 @@ NeuraBlog is a production-ready full stack blogging platform built using the MER
 
 ## 🚀 Live Demo
 
-Frontend: https://neura-blog-mu.vercel.app  
-Backend: https://neura-blog-server-pi.vercel.app  
+Frontend: https://neura-blog-mu.vercel.app/
+Backend: https://neura-blog-server-pi.vercel.app/
 
 Admin Panel: `/admin`
 
