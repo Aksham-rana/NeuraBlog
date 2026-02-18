@@ -7,22 +7,18 @@ import blogRouter from "./routes/blogRoutes.js";
 
 const app = express();
 
-// ✅ FIX CORS properly (IMPORTANT)
+// CORS
 app.use(cors({
   origin: "https://neura-blog-mu.vercel.app",
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  methods: ["GET", "POST", "i
+er", "DELETE", "OPTIONS"],
   credentials: true
 }));
 
-// ✅ Handle preflight requests
 app.options('*', cors());
 
-// ✅ Body parser
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
-
-// ✅ Connect DB
-await connectDB();
 
 // Routes
 app.get('/', (req, res) => res.send("API is Working"));
@@ -30,14 +26,24 @@ app.get('/', (req, res) => res.send("API is Working"));
 app.use('/api/admin', adminRouter);
 app.use('/api/blog', blogRouter);
 
-// ❌ REMOVE app.listen for Vercel
-// Only use locally if needed
+// ✅ CONNECT DB safely for Vercel
+let isConnected = false;
+
+const connectDatabase = async () => {
+  if (!isConnected) {
+    await connectDB();
+    isConnected = true;
+  }
+};
+
+connectDatabase();
+
+// Local run
 if (process.env.NODE_ENV !== "production") {
   const PORT = process.env.PORT || 3000;
   app.listen(PORT, () => {
-    console.log('server is running on port ' + PORT);
+    console.log('server running on port ' + PORT);
   });
 }
 
-// ✅ REQUIRED for Vercel
 export default app;
