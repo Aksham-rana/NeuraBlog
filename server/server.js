@@ -1,37 +1,32 @@
 import express from "express";
 import cors from "cors";
-import 'dotenv/config';
-
+import serverless from "serverless-http";
 import connectDB from "./configs/db.js";
 import adminRouter from "./routes/adminRoutes.js";
 import blogRouter from "./routes/blogRoutes.js";
 
 const app = express();
 
-// CORS
+// Connect database
+await connectDB();
+
+// Middleware
 app.use(cors({
   origin: "https://neura-blog-mu.vercel.app",
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   credentials: true
 }));
 
-app.options("*", cors());
-
-// Body parser
-app.use(express.json({ limit: "50mb" }));
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Connect DB on every invocation safely
-await connectDB();
-
-// Routes
+// Test route
 app.get("/", (req, res) => {
   res.status(200).send("API is Working");
 });
 
+// Routes
 app.use("/api/admin", adminRouter);
 app.use("/api/blog", blogRouter);
 
-// DO NOT use app.listen()
-
-export default app;
+// Export handler
+export default serverless(app);
